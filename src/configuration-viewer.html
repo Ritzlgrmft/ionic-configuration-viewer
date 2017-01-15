@@ -1,0 +1,9 @@
+<ion-list *ngFor="let section of configValues">
+	<ion-list-header>
+		{{section.key}}
+	</ion-list-header>
+	<ion-item *ngFor="let entry of section.entries">
+		<div item-left>{{entry.key}}</div>
+		<div item-right>{{entry.value}}</div>
+	</ion-item>
+</ion-list>

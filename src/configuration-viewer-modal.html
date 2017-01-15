@@ -1,0 +1,19 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-title>{{ "ritzlgrmft.ionic.configuration.viewer.title" | translate }}</ion-title>
+		<ion-buttons start>
+			<button hideWhen="android,windows" ion-button (click)="onClose()">
+				{{ "ritzlgrmft.ionic.buttonCancel" | translate }}
+			</button>
+			<button showWhen="android,windows" ion-button icon-only (click)="onClose()">
+				<ion-icon name="md-close" ></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<configuration-viewer></configuration-viewer>
+
+</ion-content>

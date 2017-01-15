@@ -1,0 +1,9 @@
+coverage/
+dist/**/*.d.ts
+dist/**/*.js
+dist/**/*.map
+node_modules/
+package/
+
+*.tgz
+npm-debug.log
