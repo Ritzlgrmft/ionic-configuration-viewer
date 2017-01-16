@@ -4,7 +4,6 @@ module.exports = function (config) {
 		frameworks: ["jasmine", "karma-typescript", "es6-shim"],
 
 		files: [
-			{ pattern: "base.spec.ts" },
 			{ pattern: "src/**/*.+(ts|html)" }
 		],
 
@@ -13,7 +12,7 @@ module.exports = function (config) {
 		],
 
 		proxies: {
-			"/app/": "/base/src/app/"
+			"/configuration-viewer.html": "/base/src/configuration-viewer.html"
 		},
 
 		preprocessors: {
@@ -29,7 +28,10 @@ module.exports = function (config) {
 			reports:
 			{
 				"html": "coverage",
-				"lcovonly": "coverage",
+				"lcovonly": {
+					"directory": "coverage",
+					"filename": "lcovonly/lcov.info"
+				},
 				"text-summary": ""
 			}
 		},

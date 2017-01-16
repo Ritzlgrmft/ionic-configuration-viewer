@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { ConfigurationService } from "ionic-configuration-service";
 import { Logger, LoggingService } from "ionic-logging-service";
@@ -9,10 +9,14 @@ import { ConfigurationSection } from "./configuration-section.model";
 	selector: "ionic-configuration-viewer",
 	templateUrl: "configuration-viewer.html"
 })
-export class ConfigurationViewerComponent {
+export class ConfigurationViewerComponent implements OnInit {
+
+	public configValues: ConfigurationSection[];
+
+	private logger: Logger;
 
 	constructor(
-		configurationService: ConfigurationService,
+		private configurationService: ConfigurationService,
 		loggingService: LoggingService) {
 
 		this.logger = loggingService.getLogger("Ionic.Configuration.Viewer.Component");
@@ -20,25 +24,28 @@ export class ConfigurationViewerComponent {
 		this.logger.entry(methodName);
 
 		this.configValues = [];
-		for (const key of configurationService.getKeys()) {
-			const section: ConfigurationSection = { key: key, entries: [] };
-			const value = configurationService.getValue(key);
-			if (typeof value === "object") {
-				for (const entry in value) {
-					if (value.hasOwnProperty(entry)) {
-						section.entries.push({ key: entry, value: JSON.stringify((<any>value)[entry], undefined, " ") });
-					}
-				}
-			} else {
-				section.entries.push({ value: JSON.stringify(value) });
-			}
-			this.configValues.push(section);
-		}
 
 		this.logger.exit(methodName, this.configValues);
 	}
 
-	public configValues: ConfigurationSection[];
+	public ngOnInit(): void {
+		this.configValues = [];
+		for (const key of this.configurationService.getKeys()) {
+			const section: ConfigurationSection = { key: key, entries: [] };
+			const value = this.configurationService.getValue(key);
+			if (typeof value === "object") {
+				// tslint:disable-next-line:forin
+				for (const entry in value) {
+					section.entries.push({ key: entry, value: this.convertValue((<any>value)[entry]) });
+				}
+			} else {
+				section.entries.push({ value: this.convertValue(value) });
+			}
+			this.configValues.push(section);
+		}
+	}
 
-	private logger: Logger;
+	public convertValue(value: any): string {
+		return JSON.stringify(value, undefined, 1);
+	}
 }
