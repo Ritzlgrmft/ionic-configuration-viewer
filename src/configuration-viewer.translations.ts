@@ -1,5 +1,9 @@
+/**
+ * Helper class providing translations for ConfigurationViewerModalComponent.
+ */
 export class ConfigurationViewerTranslations {
 
+	// tslint:disable-next-line:completed-docs
 	private translations = [
 		{
 			"language": "en",
@@ -29,6 +33,11 @@ export class ConfigurationViewerTranslations {
 		}
 	];
 
+	/**
+	 * Get all languages for which translations exist.
+	 * For the language, the two-letter [ISO_639-1](https://en.wikipedia.org/wiki/ISO_639-1) is used.
+	 * @returns array of languages
+	 */
 	public getLanguages(): string[] {
 
 		const languages: string[] = [];
@@ -40,6 +49,11 @@ export class ConfigurationViewerTranslations {
 		return languages;
 	}
 
+	/**
+	 * Get the tranlation for the given language.
+	 * @param language language for which the translation is requested
+	 * @returns translation
+	 */
 	public getTranslation(language: string): Object {
 
 		for (const t of this.translations) {

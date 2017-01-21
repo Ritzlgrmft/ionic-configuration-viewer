@@ -14,7 +14,12 @@ tbd
 
 ## Todo
 
-
+- test npm pack
+- semantic
+- doc
+  - jsdoc
+  - readme
+- test in sample 
 
 ## API
 

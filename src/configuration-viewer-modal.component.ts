@@ -7,6 +7,9 @@ import { Logger, LoggingService } from "ionic-logging-service";
 
 import { ConfigurationViewerTranslations } from "./configuration-viewer.translations";
 
+/**
+ * Ionic modal containing the ConfigurationViewerComponent.
+ */
 @Component({
 	templateUrl: "configuration-viewer-modal.html"
 })
@@ -26,8 +29,12 @@ export class ConfigurationViewerModalComponent {
 		this.logger.exit(methodName);
 	}
 
+	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
 
+	/**
+	 * Eventhandler called by Ionic when the modal is opened.
+	 */
 	public ionViewDidEnter(): void {
 		const methodName = "ionViewDidEnter";
 		this.logger.entry(methodName);
@@ -35,6 +42,9 @@ export class ConfigurationViewerModalComponent {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Eventhandler called when the cancel button is clicked.
+	 */
 	public onClose(): void {
 		const methodName = "onClose";
 		this.logger.entry(methodName);
@@ -44,6 +54,9 @@ export class ConfigurationViewerModalComponent {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Helper method which retrieves the translations for the ConfigurationViewerModalComponent.
+	 */
 	private ensureTranslations(): void {
 		const methodName = "ensureTranslations";
 		this.logger.entry(methodName);

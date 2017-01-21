@@ -5,6 +5,9 @@ import { ConfigurationViewerModalComponent } from "./configuration-viewer-modal.
 
 import { Logger, LoggingService } from "ionic-logging-service";
 
+/**
+ * Helper class which makes the usage of the ConfigurationViewerModalComponent more comfortable.
+ */
 @Injectable()
 export class ConfigurationViewerModalManager {
 
@@ -19,10 +22,18 @@ export class ConfigurationViewerModalManager {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Event submitted when the modal gets closed.
+	 */
 	public modalClosed = new EventEmitter<void>();
 
+	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
 
+	/**
+	 * Opens the modal.
+	 * @returns Promise which gets resolved as soon as the modal is shown.
+	 */
 	public openModal(): Promise<void> {
 		const methodName = "openModal";
 		this.logger.entry(methodName);
@@ -37,6 +48,9 @@ export class ConfigurationViewerModalManager {
 		return promise;
 	}
 
+	/**
+	 * Callback called when the modal is closed.
+	 */
 	private onModalClosed(): void {
 		const methodName = "onModalClosed";
 		this.logger.entry(methodName);
