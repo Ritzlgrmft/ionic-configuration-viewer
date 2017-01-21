@@ -1,8 +1,5 @@
 // tslint:disable:no-magic-numbers
-// import { DebugElement } from "@angular/core";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-// import { BaseRequestOptions, Http, Response, ResponseOptions } from "@angular/http";
-// import { MockBackend, MockConnection } from "@angular/http/testing";
 import { By } from "@angular/platform-browser";
 import { IonicModule } from "ionic-angular";
 
@@ -13,12 +10,10 @@ import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 
 describe("ConfigurationViewerComponent", () => {
 
-	let comp: ConfigurationViewerComponent;
+	let component: ConfigurationViewerComponent;
 	let fixture: ComponentFixture<ConfigurationViewerComponent>;
 	let configurationService: ConfigurationService;
 	let loggingService: LoggingService;
-	// let de: DebugElement;
-	// let el: HTMLElement;
 
 	const configurationServiceStub = jasmine.createSpyObj("configurationServiceStub", ["getKeys", "getValue"]);
 	configurationServiceStub.getKeys.and.returnValue([]);
@@ -48,13 +43,10 @@ describe("ConfigurationViewerComponent", () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ConfigurationViewerComponent);
 
-		comp = fixture.componentInstance;
+		component = fixture.componentInstance;
 
 		configurationService = TestBed.get(ConfigurationService);
 		loggingService = TestBed.get(LoggingService);
-
-		// de = fixture.debugElement.query(By.css("ul"));
-		// el = de.nativeElement;
 	});
 
 	describe("constructor", () => {
@@ -83,7 +75,7 @@ describe("ConfigurationViewerComponent", () => {
 			configurationServiceStub.getKeys.and.returnValue(["myKey"]);
 			configurationServiceStub.getValue.and.returnValue("myValue");
 
-			comp.ngOnInit();
+			component.ngOnInit();
 			fixture.detectChanges();
 
 			const ionList = fixture.debugElement.query(By.css("ion-list"));
@@ -108,7 +100,7 @@ describe("ConfigurationViewerComponent", () => {
 			configurationServiceStub.getKeys.and.returnValue(["myKey"]);
 			configurationServiceStub.getValue.and.returnValue("myValue");
 
-			comp.ngOnInit();
+			component.ngOnInit();
 			fixture.detectChanges();
 
 			const itemLeft = fixture.debugElement.query(By.css("div[item-left]"));
@@ -122,7 +114,7 @@ describe("ConfigurationViewerComponent", () => {
 			configurationServiceStub.getKeys.and.returnValue(["myKey"]);
 			configurationServiceStub.getValue.and.returnValue({ prop1: "x", prop2: 2 });
 
-			comp.ngOnInit();
+			component.ngOnInit();
 			fixture.detectChanges();
 
 			const ionItems = fixture.debugElement.queryAll(By.css("ion-item"));
@@ -134,31 +126,31 @@ describe("ConfigurationViewerComponent", () => {
 
 		it("string", () => {
 
-			const convertedValue = comp.convertValue("text");
+			const convertedValue = component.convertValue("text");
 			expect(convertedValue).toBe("\"text\"");
 		});
 
 		it("number", () => {
 
-			const convertedValue = comp.convertValue(42.1);
+			const convertedValue = component.convertValue(42.1);
 			expect(convertedValue).toBe("42.1");
 		});
 
 		it("boolean", () => {
 
-			const convertedValue = comp.convertValue(true);
+			const convertedValue = component.convertValue(true);
 			expect(convertedValue).toBe("true");
 		});
 
 		it("Date", () => {
 
-			const convertedValue = comp.convertValue(new Date(Date.UTC(2017, 0, 1, 18, 37, 42, 123)));
+			const convertedValue = component.convertValue(new Date(Date.UTC(2017, 0, 1, 18, 37, 42, 123)));
 			expect(convertedValue).toBe("\"2017-01-01T18:37:42.123Z\"");
 		});
 
 		it("object", () => {
 
-			const convertedValue = comp.convertValue({ prop1: "text", prop2: 42 });
+			const convertedValue = component.convertValue({ prop1: "text", prop2: 42 });
 			expect(convertedValue).toBe("{\n \"prop1\": \"text\",\n \"prop2\": 42\n}");
 		});
 	});

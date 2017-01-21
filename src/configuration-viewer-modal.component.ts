@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { ViewController } from "ionic-angular";
 
+import { TranslateService } from "ng2-translate";
+
 import { Logger, LoggingService } from "ionic-logging-service";
 
 @Component({
@@ -10,11 +12,14 @@ export class ConfigurationViewerModalComponent {
 
 	constructor(
 		private viewController: ViewController,
+		private translateService: TranslateService,
 		loggingService: LoggingService) {
 
 		this.logger = loggingService.getLogger("Ionic.Configuration.Viewer.Modal.Component");
 		const methodName = "ctor";
 		this.logger.entry(methodName);
+
+		this.ensureTranslations();
 
 		this.logger.exit(methodName);
 	}
@@ -35,5 +40,28 @@ export class ConfigurationViewerModalComponent {
 		this.viewController.dismiss();
 
 		this.logger.exit(methodName);
+	}
+
+	private ensureTranslations(): void {
+		this.translateService.setTranslation("en", {
+			"ionic": {
+				"configuration": {
+					"viewer": {
+						"title": "Configuration",
+						"buttonCancel": "Cancel"
+					}
+				}
+			}
+		});
+		this.translateService.setTranslation("de", {
+			"ionic": {
+				"configuration": {
+					"viewer": {
+						"title": "Konfiguration",
+						"buttonCancel": "Abbrechen"
+					}
+				}
+			}
+		});
 	}
 }

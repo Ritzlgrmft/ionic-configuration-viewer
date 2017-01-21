@@ -12,6 +12,11 @@
 
 tbd
 
+## Todo
+
+- export TranslateModule: https://github.com/ocombe/ng2-translate#sharedmodule
+- tests for module
+
 ## API
 
 tbd

@@ -22,11 +22,11 @@ import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 		ConfigurationViewerComponent
 	],
 	imports: [
-		IonicModule,
-		TranslateModule
+		IonicModule
 	],
 	exports: [
-		ConfigurationViewerComponent
+		ConfigurationViewerComponent,
+		TranslateModule
 	],
 	entryComponents: [
 		ConfigurationViewerModalComponent

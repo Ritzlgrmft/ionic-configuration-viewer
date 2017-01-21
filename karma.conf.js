@@ -12,7 +12,8 @@ module.exports = function (config) {
 		],
 
 		proxies: {
-			"/configuration-viewer.html": "/base/src/configuration-viewer.html"
+			"/configuration-viewer.html": "/base/src/configuration-viewer.html",
+			"/configuration-viewer-modal.html": "/base/src/configuration-viewer-modal.html"
 		},
 
 		preprocessors: {
