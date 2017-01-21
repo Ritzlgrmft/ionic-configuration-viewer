@@ -14,7 +14,7 @@ tbd
 
 ## Todo
 
-- tests for module
+
 
 ## API
 

@@ -5,6 +5,8 @@ import { TranslateService } from "ng2-translate";
 
 import { Logger, LoggingService } from "ionic-logging-service";
 
+import { ConfigurationViewerTranslations } from "./configuration-viewer.translations";
+
 @Component({
 	templateUrl: "configuration-viewer-modal.html"
 })
@@ -43,25 +45,16 @@ export class ConfigurationViewerModalComponent {
 	}
 
 	private ensureTranslations(): void {
-		this.translateService.setTranslation("en", {
-			"ionic": {
-				"configuration": {
-					"viewer": {
-						"title": "Configuration",
-						"buttonCancel": "Cancel"
-					}
-				}
-			}
-		});
-		this.translateService.setTranslation("de", {
-			"ionic": {
-				"configuration": {
-					"viewer": {
-						"title": "Konfiguration",
-						"buttonCancel": "Abbrechen"
-					}
-				}
-			}
-		});
+		const methodName = "ensureTranslations";
+		this.logger.entry(methodName);
+
+		const translations = new ConfigurationViewerTranslations();
+
+		for (const language of translations.getLanguages()) {
+			this.logger.info(methodName, `providing translations for ${language}`);
+			this.translateService.setTranslation(language, translations.getTranslation(language));
+		}
+
+		this.logger.exit(methodName);
 	}
 }

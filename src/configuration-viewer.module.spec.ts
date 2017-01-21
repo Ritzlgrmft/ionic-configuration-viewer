@@ -1,9 +1,7 @@
 // tslint:disable:no-magic-numbers
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
+import { async, TestBed } from "@angular/core/testing";
 import { IonicModule, ViewController } from "ionic-angular";
-import { TranslateLoader, TranslateModule, TranslateService } from "ng2-translate";
-import { Observable } from "rxjs/Observable";
+import { TranslateModule } from "ng2-translate";
 
 import { ConfigurationService } from "ionic-configuration-service";
 import { LoggingService } from "ionic-logging-service";
@@ -17,28 +15,19 @@ describe("ConfigurationViewerModule", () => {
 	const configurationServiceStub = jasmine.createSpyObj("configurationServiceStub", ["getKeys", "getValue"]);
 	configurationServiceStub.getKeys.and.returnValue([]);
 
-	const loggerStub = jasmine.createSpyObj("logger", ["entry", "exit"]);
+	const loggerStub = jasmine.createSpyObj("logger", ["entry", "exit", "info"]);
 
 	const loggingServiceStub = jasmine.createSpyObj("loggingServiceStub", ["getLogger"]);
 	loggingServiceStub.getLogger.and.returnValue(loggerStub);
 
 	const viewControllerStub = new ViewController();
 
-	class TranslateDummyLoader implements TranslateLoader {
-		public getTranslation(lang: string): Observable<any> {
-			return Observable.of({ notLoaded: lang });
-		}
-	}
-
 	beforeEach(async(() => {
 		TestBed
 			.configureTestingModule({
 				imports: [
 					IonicModule.forRoot(undefined),
-					TranslateModule.forRoot({
-						provide: TranslateLoader,
-						useFactory: () => new TranslateDummyLoader()
-					}),
+					TranslateModule.forRoot(),
 					ConfigurationViewerModule
 				],
 				providers: [

@@ -22,7 +22,7 @@ describe("ConfigurationViewerModalComponent", () => {
 	const configurationServiceStub = jasmine.createSpyObj("configurationServiceStub", ["getKeys", "getValue"]);
 	configurationServiceStub.getKeys.and.returnValue([]);
 
-	const loggerStub = jasmine.createSpyObj("logger", ["entry", "exit"]);
+	const loggerStub = jasmine.createSpyObj("logger", ["entry", "exit", "info"]);
 
 	const loggingServiceStub = jasmine.createSpyObj("loggingServiceStub", ["getLogger"]);
 	loggingServiceStub.getLogger.and.returnValue(loggerStub);
