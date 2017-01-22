@@ -15,7 +15,7 @@
 		"environizing"
 	],
 	"scripts": {
-		"build": "npm run clean && npm run tsc",
+		"build": "npm run clean && npm run tsc && cp src/*.scss dist",
 		"clean": "cd dist && ls | grep -v .npmignore | xargs rm && cd ..",
 		"commit": "git-cz",
 		"report-coverage": "codecov",
@@ -37,7 +37,7 @@
 		"@angular/compiler": "^2.2.1",
 		"@angular/compiler-cli": "^2.2.1",
 		"@angular/core": "^2.2.1",
-		"@angular/forms": "2.2.1",
+		"@angular/forms": "^2.2.1",
 		"@angular/http": "^2.2.1",
 		"@angular/platform-browser": "^2.2.1",
 		"@angular/platform-browser-dynamic": "^2.2.1",
@@ -48,8 +48,7 @@
 	},
 	"dependencies": {
 		"ionic-configuration-service": "^3.0.1",
-		"ionic-logging-service": "^1.1.0",
-		"ng2-translate": "^5.0.0"
+		"ionic-logging-service": "^1.1.0"
 	},
 	"devDependencies": {
 		"@angular/common": "2.2.1",

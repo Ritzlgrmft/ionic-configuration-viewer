@@ -11,7 +11,14 @@ import { ConfigurationSection } from "./configuration-section.model";
  */
 @Component({
 	selector: "ionic-configuration-viewer",
-	templateUrl: "configuration-viewer.html"
+	template:
+	"<ion-list *ngFor=\"let section of configValues\">" +
+	"<ion-list-header>{{section.key}}</ion-list-header>" +
+	"<ion-item *ngFor=\"let entry of section.entries\">" +
+	"<div item-left>{{entry.key}}</div>" +
+	"<div item-right>{{entry.value}}</div>" +
+	"</ion-item>" +
+	"</ion-list>"
 })
 export class ConfigurationViewerComponent implements OnInit {
 

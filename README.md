@@ -18,6 +18,8 @@ tbd
 - doc
   - readme
 - test in sample
+- set/overwrite translation
+- add language to openModal()
 
 ## API
 

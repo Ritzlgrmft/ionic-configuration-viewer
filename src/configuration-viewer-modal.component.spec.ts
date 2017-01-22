@@ -2,8 +2,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 import { IonicModule, ViewController } from "ionic-angular";
-import { TranslateLoader, TranslateModule, TranslateService } from "ng2-translate";
-import { Observable } from "rxjs/Observable";
 
 import { ConfigurationService } from "ionic-configuration-service";
 import { LoggingService } from "ionic-logging-service";
@@ -15,25 +13,16 @@ describe("ConfigurationViewerModalComponent", () => {
 
 	let component: ConfigurationViewerModalComponent;
 	let fixture: ComponentFixture<ConfigurationViewerModalComponent>;
-	let configurationService: ConfigurationService;
-	let loggingService: LoggingService;
-	let translateService: TranslateService;
 
 	const configurationServiceStub = jasmine.createSpyObj("configurationServiceStub", ["getKeys", "getValue"]);
 	configurationServiceStub.getKeys.and.returnValue([]);
 
-	const loggerStub = jasmine.createSpyObj("logger", ["entry", "exit", "info"]);
+	const loggerStub = jasmine.createSpyObj("logger", ["debug", "entry", "exit", "info"]);
 
 	const loggingServiceStub = jasmine.createSpyObj("loggingServiceStub", ["getLogger"]);
 	loggingServiceStub.getLogger.and.returnValue(loggerStub);
 
 	const viewControllerStub = new ViewController();
-
-	class TranslateDummyLoader implements TranslateLoader {
-		public getTranslation(lang: string): Observable<any> {
-			return Observable.of({ notLoaded: lang });
-		}
-	}
 
 	beforeEach(async(() => {
 		TestBed
@@ -43,11 +32,7 @@ describe("ConfigurationViewerModalComponent", () => {
 					ConfigurationViewerModalComponent
 				],
 				imports: [
-					IonicModule.forRoot(undefined),
-					TranslateModule.forRoot({
-						provide: TranslateLoader,
-						useFactory: () => new TranslateDummyLoader()
-					})
+					IonicModule.forRoot(undefined)
 				],
 				providers: [
 					{ provide: ConfigurationService, useValue: configurationServiceStub },
@@ -60,14 +45,7 @@ describe("ConfigurationViewerModalComponent", () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ConfigurationViewerModalComponent);
-
 		component = fixture.componentInstance;
-
-		configurationService = TestBed.get(ConfigurationService);
-		loggingService = TestBed.get(LoggingService);
-
-		translateService = TestBed.get(TranslateService);
-
 	});
 
 	describe("constructor", () => {
@@ -107,22 +85,36 @@ describe("ConfigurationViewerModalComponent", () => {
 		});
 	});
 
-	describe("ng2-translate", () => {
+	describe("translation", () => {
 
 		it("known language: title is translated", () => {
-			translateService.use("en");
+
+			component.language = "de";
+			component.ngOnInit();
+			fixture.detectChanges();
+
+			const ionTitle = fixture.debugElement.query(By.css("ion-title"));
+			expect(ionTitle.nativeElement.textContent).toBe("Konfiguration");
+		});
+
+		it("unknown language: english translation is used", () => {
+
+			component.language = "fr";
+			component.ngOnInit();
 			fixture.detectChanges();
 
 			const ionTitle = fixture.debugElement.query(By.css("ion-title"));
 			expect(ionTitle.nativeElement.textContent).toBe("Configuration");
 		});
 
-		it("unknown language: title is resource id", () => {
-			translateService.use("xx");
+		it("no language: english translation is used", () => {
+
+			component.language = undefined;
+			component.ngOnInit();
 			fixture.detectChanges();
 
 			const ionTitle = fixture.debugElement.query(By.css("ion-title"));
-			expect(ionTitle.nativeElement.textContent).toBe("ionic.configuration.viewer.title");
+			expect(ionTitle.nativeElement.textContent).toBe("Configuration");
 		});
 	});
 });
