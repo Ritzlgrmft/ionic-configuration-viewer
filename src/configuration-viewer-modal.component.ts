@@ -12,10 +12,10 @@ import { ConfigurationViewerTranslation } from "./configuration-viewer-translati
 	template:
 	"<ion-header>" +
 	"<ion-toolbar color=\"primary\">" +
-	"<ion-title>{{ translations[language].title }}</ion-title>" +
+	"<ion-title>{{ getTranslation().title }}</ion-title>" +
 	"<ion-buttons start>" +
 	"<button ion-button hideWhen=\"android,windows\" (click)=\"onClose()\" >" +
-	"{{ translations[language].buttonCancel }}" +
+	"{{ getTranslation().buttonCancel }}" +
 	"</button>" +
 	"<button ion-button icon-only showWhen= \"android,windows\" (click)=\"onClose()\" >" +
 	"<ion-icon name=\"md-close\"></ion-icon>" +
@@ -35,6 +35,12 @@ export class ConfigurationViewerModalComponent implements OnInit {
 	 */
 	@Input() public language: string;
 
+	/**
+	 * Translation to be used for the modal.
+	 * If specified, the language is ignored.
+	 */
+	@Input() public translation: ConfigurationViewerTranslation;
+
 	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
 
@@ -43,14 +49,11 @@ export class ConfigurationViewerModalComponent implements OnInit {
 
 	constructor(
 		private viewController: ViewController,
-		// private translateService: TranslateService,
 		loggingService: LoggingService) {
 
 		this.logger = loggingService.getLogger("Ionic.Configuration.Viewer.Modal.Component");
 		const methodName = "ctor";
 		this.logger.entry(methodName);
-
-		// this.ensureTranslations();
 
 		this.logger.exit(methodName);
 	}
@@ -60,8 +63,6 @@ export class ConfigurationViewerModalComponent implements OnInit {
 	 * It configures the supported translations.
 	 */
 	public ngOnInit(): void {
-		const methodName = "ngOnInit";
-
 		// prepare translations
 		this.translations = {};
 		// tslint:disable-next-line:no-string-literal
@@ -74,15 +75,6 @@ export class ConfigurationViewerModalComponent implements OnInit {
 			"title": "Konfiguration",
 			"buttonCancel": "Abbrechen"
 		};
-
-		// set default language
-		if (typeof this.language === "undefined") {
-			this.logger.debug(methodName, "no language defined, using en");
-			this.language = "en";
-		} else if (typeof this.translations[this.language] !== "object") {
-			this.logger.debug(methodName, `no translations for language ${this.language}, using en`);
-			this.language = "en";
-		}
 	}
 
 	/**
@@ -107,59 +99,20 @@ export class ConfigurationViewerModalComponent implements OnInit {
 		this.logger.exit(methodName);
 	}
 
-	// /**
-	//  * Helper method which retrieves the translations for the ConfigurationViewerModalComponent.
-	//  */
-	// public ensureTranslations(): Promise<void> {
-	// 	const methodName = "ensureTranslations";
-	// 	this.logger.entry(methodName);
-
-	// 	const translations = new ConfigurationViewerTranslations();
-
-	// 	const promises: Promise<void>[] = [];
-	// 	for (const language of translations.getLanguages()) {
-	// 		// this.logger.info(methodName, `providing translations for ${language}`);
-
-	// 		// promises.push(
-	// 		const o = this.translateService.getTranslation(language);
-	// 		o.subscribe(translation => {
-	// 			this.updateTranslations(undefined, translation, translations.getTranslation(language));
-	// 		});
-	// 		// let p = o.toPromise();
-	// 		// p = p
-	// 		// 	.then(translation => {
-	// 		// 		this.updateTranslations(undefined, translation, translations.getTranslation(language));
-	// 		// 	});
-	// 		// promises.push(p);
-	// 		// );
-	// 		// this.translateService.setTranslation(language, translations.getTranslation(language), true);
-	// 	}
-
-	// 	const promise = Promise.all(promises)
-	// 		.then(() => {
-	// 			if (this.translateService.currentLang === undefined) {
-	// 				this.logger.info(methodName, "setting language to 'en'");
-	// 				this.translateService.use("en");
-	// 			}
-	// 		});
-
-	// 	this.logger.exit(methodName);
-	// 	return promise;
-	// }
-
-	// private updateTranslations(parentKey: string, currentTranslations: { [key: string]: any }, newTranslations: { [key: string]: any }): void {
-	// 	const methodName = "updateTranslations";
-
-	// 	// tslint:disable-next-line:forin
-	// 	for (const key in newTranslations) {
-	// 		const currentKey = typeof parentKey === "undefined" ? key : parentKey + "." + key;
-	// 		if (typeof currentTranslations[key] === "undefined") {
-	// 			currentTranslations[key] = newTranslations[key];
-	// 		} else if (typeof currentTranslations[key] === "object" && typeof newTranslations[key] === "object") {
-	// 			this.updateTranslations(currentKey, currentTranslations[key], newTranslations[key]);
-	// 		} else {
-	// 			this.logger.debug(methodName, `${currentKey} gets not updated`);
-	// 		}
-	// 	}
-	// }
+	/**
+	 * Helper method returning the current translation:
+	 * - the property translation if defined
+	 * - the translation according property language if valid
+	 * - English translation, otherwise
+	 */
+	public getTranslation(): ConfigurationViewerTranslation {
+		if (typeof this.translation !== "undefined") {
+			return this.translation;
+		} else if (typeof this.language !== "undefined" && typeof this.translations[this.language] === "object") {
+			return this.translations[this.language];
+		} else {
+			// tslint:disable-next-line:no-string-literal
+			return this.translations["en"];
+		}
+	}
 }

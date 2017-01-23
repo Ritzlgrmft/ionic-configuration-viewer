@@ -1,6 +1,5 @@
 // tslint:disable:no-magic-numbers
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
 import { IonicModule, ViewController } from "ionic-angular";
 
 import { ConfigurationService } from "ionic-configuration-service";
@@ -85,36 +84,62 @@ describe("ConfigurationViewerModalComponent", () => {
 		});
 	});
 
-	describe("translation", () => {
+	describe("getTranslation(): ConfigurationViewerTranslation", () => {
 
-		it("known language: title is translated", () => {
+		it("known language, no translation: title is translated", () => {
 
+			component.ngOnInit();
 			component.language = "de";
-			component.ngOnInit();
-			fixture.detectChanges();
+			component.translation = undefined;
 
-			const ionTitle = fixture.debugElement.query(By.css("ion-title"));
-			expect(ionTitle.nativeElement.textContent).toBe("Konfiguration");
+			const translation = component.getTranslation();
+
+			expect(translation.title).toBe("Konfiguration");
 		});
 
-		it("unknown language: english translation is used", () => {
+		it("unknown language, no translation: english translation is used", () => {
 
+			component.ngOnInit();
 			component.language = "fr";
-			component.ngOnInit();
-			fixture.detectChanges();
+			component.translation = undefined;
 
-			const ionTitle = fixture.debugElement.query(By.css("ion-title"));
-			expect(ionTitle.nativeElement.textContent).toBe("Configuration");
+			const translation = component.getTranslation();
+
+			expect(translation.title).toBe("Configuration");
 		});
 
-		it("no language: english translation is used", () => {
+		it("no language, no translation: english translation is used", () => {
 
-			component.language = undefined;
 			component.ngOnInit();
-			fixture.detectChanges();
+			component.language = undefined;
+			component.translation = undefined;
 
-			const ionTitle = fixture.debugElement.query(By.css("ion-title"));
-			expect(ionTitle.nativeElement.textContent).toBe("Configuration");
+			const translation = component.getTranslation();
+
+			expect(translation.title).toBe("Configuration");
+		});
+
+		it("no language, but translation: translation is used", () => {
+
+			component.ngOnInit();
+			component.language = undefined;
+			component.translation = { title: "ttt", buttonCancel: "bc" };
+
+			const translation = component.getTranslation();
+
+			expect(translation.title).toBe("ttt");
+		});
+
+
+		it("language and translation: translation is used", () => {
+
+			component.ngOnInit();
+			component.language = "en";
+			component.translation = { title: "ttt", buttonCancel: "bc" };
+
+			const translation = component.getTranslation();
+
+			expect(translation.title).toBe("ttt");
 		});
 	});
 });
