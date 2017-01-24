@@ -28,7 +28,8 @@
 		"semantic-release": "semantic-release pre && npm publish && semantic-release post"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"src"
 	],
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
