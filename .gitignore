@@ -2,7 +2,9 @@ coverage/
 dist/**/*.d.ts
 dist/**/*.js
 dist/**/*.map
+dist/**/*.metadata.json
 node_modules/
+src/**/*.ngfactory.ts
 package/
 
 *.tgz
