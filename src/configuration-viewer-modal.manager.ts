@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { ModalController } from "ionic-angular";
 
 import { ConfigurationViewerModalComponent } from "./configuration-viewer-modal.component";
+import { ConfigurationViewerTranslation } from "./configuration-viewer-translation.model";
 
 import { Logger, LoggingService } from "ionic-logging-service";
 
@@ -34,11 +35,14 @@ export class ConfigurationViewerModalManager {
 	 * Opens the modal.
 	 * @returns Promise which gets resolved as soon as the modal is shown.
 	 */
-	public openModal(): Promise<void> {
+	public openModal(language: string = undefined, translation: ConfigurationViewerTranslation = undefined): Promise<void> {
 		const methodName = "openModal";
 		this.logger.entry(methodName);
 
-		const modal = this.modalController.create(ConfigurationViewerModalComponent);
+		const modal = this.modalController.create(ConfigurationViewerModalComponent, {
+			language: language,
+			translation: translation
+		});
 		modal.onDidDismiss(() => {
 			this.onModalClosed();
 		});

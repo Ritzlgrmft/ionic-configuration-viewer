@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { ViewController } from "ionic-angular";
+import { Component, OnInit } from "@angular/core";
+import { NavParams, ViewController } from "ionic-angular";
 
 import { Logger, LoggingService } from "ionic-logging-service";
 
@@ -33,27 +33,31 @@ export class ConfigurationViewerModalComponent implements OnInit {
 	 * Language to be used for the modal.
 	 * Currently supported: en, de
 	 */
-	@Input() public language: string;
+	public language: string;
 
 	/**
 	 * Translation to be used for the modal.
 	 * If specified, the language is ignored.
 	 */
-	@Input() public translation: ConfigurationViewerTranslation;
+	public translation: ConfigurationViewerTranslation;
 
 	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
 
 	// tslint:disable-next-line:completed-docs	
-	public translations: { [language: string]: ConfigurationViewerTranslation; };
+	private translations: { [language: string]: ConfigurationViewerTranslation; };
 
 	constructor(
 		private viewController: ViewController,
+		navParams: NavParams,
 		loggingService: LoggingService) {
 
 		this.logger = loggingService.getLogger("Ionic.Configuration.Viewer.Modal.Component");
 		const methodName = "ctor";
 		this.logger.entry(methodName);
+
+		this.language = navParams.get("language");
+		this.translation = navParams.get("translation");
 
 		this.logger.exit(methodName);
 	}

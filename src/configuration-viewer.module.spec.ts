@@ -1,7 +1,6 @@
 // tslint:disable:no-magic-numbers
 import { async, TestBed } from "@angular/core/testing";
-import { IonicModule, ViewController } from "ionic-angular";
-import { TranslateModule } from "ng2-translate";
+import { IonicModule, NavParams, ViewController } from "ionic-angular";
 
 import { ConfigurationService } from "ionic-configuration-service";
 import { LoggingService } from "ionic-logging-service";
@@ -22,18 +21,21 @@ describe("ConfigurationViewerModule", () => {
 
 	const viewControllerStub = new ViewController();
 
+	const navParamsStub = jasmine.createSpyObj("navParams", ["get"]);
+	navParamsStub.get.and.returnValue(undefined);
+
 	beforeEach(async(() => {
 		TestBed
 			.configureTestingModule({
 				imports: [
 					IonicModule.forRoot(undefined),
-					TranslateModule.forRoot(),
 					ConfigurationViewerModule
 				],
 				providers: [
 					{ provide: ConfigurationService, useValue: configurationServiceStub },
 					{ provide: LoggingService, useValue: loggingServiceStub },
-					{ provide: ViewController, useValue: viewControllerStub }
+					{ provide: ViewController, useValue: viewControllerStub },
+					{ provide: NavParams, useValue: navParamsStub }
 				]
 			})
 			.compileComponents();

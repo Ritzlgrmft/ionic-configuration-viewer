@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { IonicModule } from "ionic-angular";
-import { TranslateModule } from "ng2-translate";
 
 import { ConfigurationViewerModalComponent } from "./configuration-viewer-modal.component";
 import { ConfigurationViewerModalManager } from "./configuration-viewer-modal.manager";
@@ -22,12 +21,10 @@ import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 		ConfigurationViewerComponent
 	],
 	imports: [
-		IonicModule,
-		TranslateModule
+		IonicModule
 	],
 	exports: [
-		ConfigurationViewerComponent,
-		TranslateModule
+		ConfigurationViewerComponent
 	],
 	entryComponents: [
 		ConfigurationViewerModalComponent

@@ -45,7 +45,7 @@ describe("ConfigurationViewerModalManager", () => {
 
 	describe("openModal(): Promise<void>", () => {
 
-		it("presents modal", (done) => {
+		it("presents modal", done => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 			spyOn(modalStub, "present").and.callThrough();
@@ -53,6 +53,51 @@ describe("ConfigurationViewerModalManager", () => {
 			manager.openModal()
 				.then(() => {
 					expect(modalStub.present).toHaveBeenCalled();
+					done();
+				});
+		});
+
+		it("language is passed", done => {
+
+			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
+
+			manager.openModal("xx")
+				.then(() => {
+					expect(modalControllerStub.create.calls.mostRecent().args[1])
+						.toEqual({
+							language: "xx",
+							translation: undefined
+						});
+					done();
+				});
+		});
+
+		it("translation is passed", done => {
+
+			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
+
+			manager.openModal(undefined, { title: "ttt", buttonCancel: "bc" })
+				.then(() => {
+					expect(modalControllerStub.create.calls.mostRecent().args[1])
+						.toEqual({
+							language: undefined,
+							translation: { title: "ttt", buttonCancel: "bc" }
+						});
+					done();
+				});
+		});
+
+		it("language and translation is passed", done => {
+
+			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
+
+			manager.openModal("xx", { title: "ttt", buttonCancel: "bc" })
+				.then(() => {
+					expect(modalControllerStub.create.calls.mostRecent().args[1])
+						.toEqual({
+							language: "xx",
+							translation: { title: "ttt", buttonCancel: "bc" }
+						});
 					done();
 				});
 		});
