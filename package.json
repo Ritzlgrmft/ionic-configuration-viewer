@@ -21,9 +21,9 @@
 		"report-coverage": "codecov",
 		"karma": "karma start karma.conf.js --browsers Chrome",
 		"karma-once": "karma start karma.conf.js --browsers PhantomJS --single-run",
-		"lint": "tslint --project tsconfig.json --config tslint.typecheck.json --format verbose --type-check --exclude \"**/*.spec.ts\"",
+		"lint": "tslint --project tsconfig.ngc.json --config tslint.typecheck.json --format verbose --type-check --exclude \"**/*.spec.ts\"",
 		"test": "npm run tsc && npm run lint && npm run karma-once",
-		"tsc": "ngc",
+		"tsc": "ngc -p tsconfig.ngc.json",
 		"validate": "npm run karma-once && npm run lint",
 		"semantic-release": "semantic-release pre && npm publish && semantic-release post"
 	},
@@ -48,8 +48,8 @@
 		"zone.js": "^0.6.26"
 	},
 	"dependencies": {
-		"ionic-configuration-service": "^3.0.1",
-		"ionic-logging-service": "^1.1.0"
+		"ionic-configuration-service": "../ionic-configuration-service/ionic-configuration-service-0.0.0-development.tgz",
+		"ionic-logging-service": "../ionic-logging-service/ionic-logging-service-0.0.0-development.tgz"
 	},
 	"devDependencies": {
 		"@angular/common": "2.2.1",

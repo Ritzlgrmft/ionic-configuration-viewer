@@ -8,7 +8,8 @@ module.exports = function (config) {
 		],
 
 		exclude: [
-			"dist/**/*"
+			"dist/**/*",
+			"src/**/*.ngfactory.ts"
 		],
 
 		proxies: {
