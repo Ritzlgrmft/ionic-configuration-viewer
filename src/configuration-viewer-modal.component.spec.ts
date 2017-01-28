@@ -127,7 +127,7 @@ describe("ConfigurationViewerModalComponent", () => {
 
 			component.ngOnInit();
 			component.language = undefined;
-			component.translation = { title: "ttt", buttonCancel: "bc" };
+			component.translation = { title: "ttt", cancel: "bc" };
 
 			const translation = component.getTranslation();
 
@@ -139,7 +139,7 @@ describe("ConfigurationViewerModalComponent", () => {
 
 			component.ngOnInit();
 			component.language = "en";
-			component.translation = { title: "ttt", buttonCancel: "bc" };
+			component.translation = { title: "ttt", cancel: "bc" };
 
 			const translation = component.getTranslation();
 

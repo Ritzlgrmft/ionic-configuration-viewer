@@ -76,12 +76,12 @@ describe("ConfigurationViewerModalManager", () => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
-			manager.openModal(undefined, { title: "ttt", buttonCancel: "bc" })
+			manager.openModal(undefined, { title: "ttt", cancel: "bc" })
 				.then(() => {
 					expect(modalControllerStub.create.calls.mostRecent().args[1])
 						.toEqual({
 							language: undefined,
-							translation: { title: "ttt", buttonCancel: "bc" }
+							translation: { title: "ttt", cancel: "bc" }
 						});
 					done();
 				});
@@ -91,12 +91,12 @@ describe("ConfigurationViewerModalManager", () => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
-			manager.openModal("xx", { title: "ttt", buttonCancel: "bc" })
+			manager.openModal("xx", { title: "ttt", cancel: "bc" })
 				.then(() => {
 					expect(modalControllerStub.create.calls.mostRecent().args[1])
 						.toEqual({
 							language: "xx",
-							translation: { title: "ttt", buttonCancel: "bc" }
+							translation: { title: "ttt", cancel: "bc" }
 						});
 					done();
 				});

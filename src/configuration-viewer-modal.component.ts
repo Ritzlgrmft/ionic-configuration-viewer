@@ -15,9 +15,9 @@ import { ConfigurationViewerTranslation } from "./configuration-viewer-translati
 	"<ion-title>{{ getTranslation().title }}</ion-title>" +
 	"<ion-buttons start>" +
 	"<button ion-button hideWhen=\"android,windows\" (click)=\"onClose()\" >" +
-	"{{ getTranslation().buttonCancel }}" +
+	"{{ getTranslation().cancel }}" +
 	"</button>" +
-	"<button ion-button icon-only showWhen= \"android,windows\" (click)=\"onClose()\" >" +
+	"<button ion-button icon-only showWhen=\"android,windows\" (click)=\"onClose()\" >" +
 	"<ion-icon name=\"md-close\"></ion-icon>" +
 	"</button>" +
 	"</ion-buttons>" +
@@ -72,12 +72,12 @@ export class ConfigurationViewerModalComponent implements OnInit {
 		// tslint:disable-next-line:no-string-literal
 		this.translations["en"] = {
 			"title": "Configuration",
-			"buttonCancel": "Cancel"
+			"cancel": "Cancel"
 		};
 		// tslint:disable-next-line:no-string-literal
 		this.translations["de"] = {
 			"title": "Konfiguration",
-			"buttonCancel": "Abbrechen"
+			"cancel": "Abbrechen"
 		};
 	}
 
