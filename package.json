@@ -49,8 +49,8 @@
 		"zone.js": "^0.6.26"
 	},
 	"dependencies": {
-		"ionic-configuration-service": "../ionic-configuration-service/ionic-configuration-service-0.0.0-development.tgz",
-		"ionic-logging-service": "../ionic-logging-service/ionic-logging-service-0.0.0-development.tgz"
+		"ionic-configuration-service": "^3.1.0",
+		"ionic-logging-service": "^1.2.0"
 	},
 	"devDependencies": {
 		"@angular/common": "2.2.1",
@@ -72,17 +72,17 @@
 		"commitizen": "~2.9.5",
 		"cz-conventional-changelog": "~1.2.0",
 		"jasmine-core": "~2.5.2",
-		"karma": "~1.3.0",
+		"karma": "~1.4.0",
 		"karma-chrome-launcher": "~2.0.0",
 		"karma-es6-shim": "~1.0.0",
 		"karma-jasmine": "~1.1.0",
 		"karma-phantomjs-launcher": "~1.0.2",
-		"karma-typescript": "^2.1.6",
+		"karma-typescript": "^2.1.7",
 		"reflect-metadata": "~0.1.9",
 		"requirejs": "~2.3.2",
-		"tslint": "~4.3.1",
+		"tslint": "~4.4.2",
 		"typescript": "~2.0.9",
-		"semantic-release": "~6.3.2"
+		"semantic-release": "^6.3.2"
 	},
 	"config": {
 		"commitizen": {
