@@ -25,7 +25,11 @@ It provides 2 components:
 
 A sample app using these components is [ionic-configuration-sample](https://github.com/Ritzlgrmft/ionic-configuration-sample).
 
-![Screenshot](docs/configuration-viewer-modal.png)
+## Screenshots
+
+| Configuration Modal |
+| ---------- |
+| ![](docs/configuration-modal.png) |
 
 ## Usage
 
