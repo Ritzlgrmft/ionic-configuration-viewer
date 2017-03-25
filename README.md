@@ -10,6 +10,7 @@
 [![Peer-Dependencies](https://david-dm.org/ritzlgrmft/ionic-configuration-viewer/master/peer-status.svg)](https://david-dm.org/ritzlgrmft/ionic-configuration-viewer/master?type=peer)
 [![Dev-Dependencies](https://david-dm.org/ritzlgrmft/ionic-configuration-viewer/master/dev-status.svg)](https://david-dm.org/ritzlgrmft/ionic-configuration-viewer/master?type=dev)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Known Vulnerabilities](https://snyk.io/test/github/ritzlgrmft/ionic-configuration-viewer/badge.svg)](https://snyk.io/test/github/ritzlgrmft/ionic-configuration-viewer)
 [![License](https://img.shields.io/npm/l/ionic-configuration-viewer.svg)](https://www.npmjs.com/package/ionic-configuration-viewer)
 
 The configuration viewer is a small component which can be used in your [Ionic app](https://github.com/driftyco/ionic)
