@@ -1,6 +1,7 @@
 # ionic-configuration-viewer
 
-**The dependencies used by the latest version are the same as needed for [Ionic 2.0.0](https://github.com/driftyco/ionic/blob/master/CHANGELOG.md).**
+**The dependencies used by the latest version are the same as needed for [Ionic 2.2.0](https://github.com/driftyco/ionic/blob/master/CHANGELOG.md).  
+For Ionic 2.0.0, use version 1.2.1.**
 
 [![Build](https://travis-ci.org/Ritzlgrmft/ionic-configuration-viewer.svg?branch=master)](https://travis-ci.org/Ritzlgrmft/ionic-configuration-viewer)
 [![Codecov](https://codecov.io/gh/Ritzlgrmft/ionic-configuration-viewer/branch/master/graph/badge.svg)](https://codecov.io/gh/Ritzlgrmft/ionic-configuration-viewer)
