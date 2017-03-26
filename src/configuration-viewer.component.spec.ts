@@ -27,15 +27,15 @@ describe("ConfigurationViewerComponent", () => {
 		TestBed
 			.configureTestingModule({
 				declarations: [
-					ConfigurationViewerComponent
+					ConfigurationViewerComponent,
 				],
 				imports: [
-					IonicModule.forRoot(undefined)
+					IonicModule.forRoot(undefined),
 				],
 				providers: [
 					{ provide: ConfigurationService, useValue: configurationServiceStub },
-					{ provide: LoggingService, useValue: loggingServiceStub }
-				]
+					{ provide: LoggingService, useValue: loggingServiceStub },
+				],
 			})
 			.compileComponents();
 	}));

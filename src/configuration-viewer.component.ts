@@ -18,7 +18,7 @@ import { ConfigurationSection } from "./configuration-section.model";
 	"<div item-left>{{entry.key}}</div>" +
 	"<div item-right>{{entry.value}}</div>" +
 	"</ion-item>" +
-	"</ion-list>"
+	"</ion-list>",
 })
 export class ConfigurationViewerComponent implements OnInit {
 
@@ -49,7 +49,7 @@ export class ConfigurationViewerComponent implements OnInit {
 	public ngOnInit(): void {
 		this.configValues = [];
 		for (const key of this.configurationService.getKeys()) {
-			const section: ConfigurationSection = { key: key, entries: [] };
+			const section: ConfigurationSection = { key, entries: [] };
 			const value = this.configurationService.getValue(key);
 			if (typeof value === "object") {
 				// tslint:disable-next-line:forin

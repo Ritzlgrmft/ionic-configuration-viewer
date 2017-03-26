@@ -5,8 +5,8 @@ import { IonicModule, NavParams, ViewController } from "ionic-angular";
 import { ConfigurationService } from "ionic-configuration-service";
 import { LoggingService } from "ionic-logging-service";
 
-import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 import { ConfigurationViewerModalComponent } from "./configuration-viewer-modal.component";
+import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 
 describe("ConfigurationViewerModalComponent", () => {
 
@@ -31,17 +31,17 @@ describe("ConfigurationViewerModalComponent", () => {
 			.configureTestingModule({
 				declarations: [
 					ConfigurationViewerComponent,
-					ConfigurationViewerModalComponent
+					ConfigurationViewerModalComponent,
 				],
 				imports: [
-					IonicModule.forRoot(undefined)
+					IonicModule.forRoot(undefined),
 				],
 				providers: [
 					{ provide: ConfigurationService, useValue: configurationServiceStub },
 					{ provide: LoggingService, useValue: loggingServiceStub },
 					{ provide: ViewController, useValue: viewControllerStub },
-					{ provide: NavParams, useValue: navParamsStub }
-				]
+					{ provide: NavParams, useValue: navParamsStub },
+				],
 			})
 			.compileComponents();
 	}));
@@ -133,7 +133,6 @@ describe("ConfigurationViewerModalComponent", () => {
 
 			expect(translation.title).toBe("ttt");
 		});
-
 
 		it("language and translation: translation is used", () => {
 

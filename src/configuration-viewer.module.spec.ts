@@ -5,8 +5,8 @@ import { IonicModule, NavParams, ViewController } from "ionic-angular";
 import { ConfigurationService } from "ionic-configuration-service";
 import { LoggingService } from "ionic-logging-service";
 
-import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 import { ConfigurationViewerModalComponent } from "./configuration-viewer-modal.component";
+import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 import { ConfigurationViewerModule } from "./configuration-viewer.module";
 
 describe("ConfigurationViewerModule", () => {
@@ -29,14 +29,14 @@ describe("ConfigurationViewerModule", () => {
 			.configureTestingModule({
 				imports: [
 					IonicModule.forRoot(undefined),
-					ConfigurationViewerModule
+					ConfigurationViewerModule,
 				],
 				providers: [
 					{ provide: ConfigurationService, useValue: configurationServiceStub },
 					{ provide: LoggingService, useValue: loggingServiceStub },
 					{ provide: ViewController, useValue: viewControllerStub },
-					{ provide: NavParams, useValue: navParamsStub }
-				]
+					{ provide: NavParams, useValue: navParamsStub },
+				],
 			})
 			.compileComponents();
 	}));

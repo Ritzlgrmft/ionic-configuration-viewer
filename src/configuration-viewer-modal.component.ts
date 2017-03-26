@@ -25,7 +25,7 @@ import { ConfigurationViewerTranslation } from "./configuration-viewer-translati
 	"</ion-header>" +
 	"<ion-content>" +
 	"<ionic-configuration-viewer></ionic-configuration-viewer>" +
-	"</ion-content>"
+	"</ion-content>",
 })
 export class ConfigurationViewerModalComponent implements OnInit {
 
@@ -44,7 +44,7 @@ export class ConfigurationViewerModalComponent implements OnInit {
 	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
 
-	// tslint:disable-next-line:completed-docs	
+	// tslint:disable-next-line:completed-docs
 	private translations: { [language: string]: ConfigurationViewerTranslation; };
 
 	constructor(
@@ -71,13 +71,13 @@ export class ConfigurationViewerModalComponent implements OnInit {
 		this.translations = {};
 		// tslint:disable-next-line:no-string-literal
 		this.translations["en"] = {
-			"title": "Configuration",
-			"cancel": "Cancel"
+			cancel: "Cancel",
+			title: "Configuration",
 		};
 		// tslint:disable-next-line:no-string-literal
 		this.translations["de"] = {
-			"title": "Konfiguration",
-			"cancel": "Abbrechen"
+			cancel: "Abbrechen",
+			title: "Konfiguration",
 		};
 	}
 

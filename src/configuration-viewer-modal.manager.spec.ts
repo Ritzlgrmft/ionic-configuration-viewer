@@ -29,6 +29,7 @@ describe("ConfigurationViewerModalManager", () => {
 
 		it("gets correct named logger", () => {
 
+			// tslint:disable-next-line:no-unused-new
 			new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
 			expect(loggingServiceStub.getLogger).toHaveBeenCalledWith("Ionic.Configuration.Viewer.Modal.Manager");
@@ -36,6 +37,7 @@ describe("ConfigurationViewerModalManager", () => {
 
 		it("logs entry and exit", () => {
 
+			// tslint:disable-next-line:no-unused-new
 			new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
 			expect(loggerStub.entry).toHaveBeenCalledWith("ctor");
@@ -45,7 +47,7 @@ describe("ConfigurationViewerModalManager", () => {
 
 	describe("openModal(): Promise<void>", () => {
 
-		it("presents modal", done => {
+		it("presents modal", (done) => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 			spyOn(modalStub, "present").and.callThrough();
@@ -57,7 +59,7 @@ describe("ConfigurationViewerModalManager", () => {
 				});
 		});
 
-		it("language is passed", done => {
+		it("language is passed", (done) => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
@@ -66,13 +68,13 @@ describe("ConfigurationViewerModalManager", () => {
 					expect(modalControllerStub.create.calls.mostRecent().args[1])
 						.toEqual({
 							language: "xx",
-							translation: undefined
+							translation: undefined,
 						});
 					done();
 				});
 		});
 
-		it("translation is passed", done => {
+		it("translation is passed", (done) => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
@@ -81,13 +83,13 @@ describe("ConfigurationViewerModalManager", () => {
 					expect(modalControllerStub.create.calls.mostRecent().args[1])
 						.toEqual({
 							language: undefined,
-							translation: { title: "ttt", cancel: "bc" }
+							translation: { title: "ttt", cancel: "bc" },
 						});
 					done();
 				});
 		});
 
-		it("language and translation is passed", done => {
+		it("language and translation is passed", (done) => {
 
 			const manager = new ConfigurationViewerModalManager(modalControllerStub, loggingServiceStub);
 
@@ -96,7 +98,7 @@ describe("ConfigurationViewerModalManager", () => {
 					expect(modalControllerStub.create.calls.mostRecent().args[1])
 						.toEqual({
 							language: "xx",
-							translation: { title: "ttt", cancel: "bc" }
+							translation: { title: "ttt", cancel: "bc" },
 						});
 					done();
 				});

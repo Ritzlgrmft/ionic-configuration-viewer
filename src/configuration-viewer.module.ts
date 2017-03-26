@@ -18,19 +18,19 @@ import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 @NgModule({
 	declarations: [
 		ConfigurationViewerModalComponent,
-		ConfigurationViewerComponent
-	],
-	imports: [
-		IonicModule
-	],
-	exports: [
-		ConfigurationViewerComponent
+		ConfigurationViewerComponent,
 	],
 	entryComponents: [
-		ConfigurationViewerModalComponent
+		ConfigurationViewerModalComponent,
+	],
+	exports: [
+		ConfigurationViewerComponent,
+	],
+	imports: [
+		IonicModule,
 	],
 	providers: [
-		ConfigurationViewerModalManager
-	]
+		ConfigurationViewerModalManager,
+	],
 })
 export class ConfigurationViewerModule { }

@@ -22,7 +22,7 @@
 		"copy-scss": "cp src/*.scss dist",
 		"karma": "karma start karma.conf.js --browsers Chrome",
 		"karma-once": "karma start karma.conf.js --browsers PhantomJS --single-run",
-		"lint": "tslint --project tsconfig.aot.json --config tslint.typecheck.json --format verbose --type-check --exclude \"**/*.spec.ts\"",
+		"lint": "tslint --project tsconfig.json --format verbose",
 		"pack": "npm run build && npm pack",
 		"report-coverage": "codecov",
 		"semantic-release": "semantic-release pre && npm publish && semantic-release post",
