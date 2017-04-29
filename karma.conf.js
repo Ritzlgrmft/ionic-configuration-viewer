@@ -1,10 +1,11 @@
 module.exports = function (config) {
 	config.set({
 
-		frameworks: ["jasmine", "karma-typescript", "es6-shim"],
+		frameworks: ["jasmine", "karma-typescript"],
 
 		files: [
-			{ pattern: "src/**/*.+(ts|html)" }
+			{ pattern: "src/**/*.+(ts|html)" },
+			"node_modules/babel-polyfill/dist/polyfill.js"
 		],
 
 		exclude: [
@@ -26,7 +27,7 @@ module.exports = function (config) {
 		browsers: ["Chrome", "PhantomJS"],
 
 		karmaTypescriptConfig: {
-			exclude: ["dist"],
+			exclude: ["dist", "aot"],
 			reports:
 			{
 				"html": "coverage",
@@ -40,6 +41,25 @@ module.exports = function (config) {
 				transforms: [
 					require("karma-typescript-es6-transform")()
 				]
+			},
+			compilerOptions: {
+				"target": "es5",
+				"lib": [
+					"dom",
+					"es2015"
+				],
+				"module": "commonjs",
+				"moduleResolution": "node",
+				"emitDecoratorMetadata": true,
+				"experimentalDecorators": true,
+				"noFallthroughCasesInSwitch": true,
+				"noImplicitAny": true,
+				"noImplicitReturns": true,
+				"noUnusedLocals": true,
+				"noUnusedParameters": true,
+				"declaration": true,
+				"sourceMap": true,
+				"outDir": "dist"
 			}
 		},
 

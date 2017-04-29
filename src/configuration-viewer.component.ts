@@ -54,7 +54,7 @@ export class ConfigurationViewerComponent implements OnInit {
 			if (typeof value === "object") {
 				// tslint:disable-next-line:forin
 				for (const entry in value) {
-					section.entries.push({ key: entry, value: this.convertValue((<any>value)[entry]) });
+					section.entries.push({ key: entry, value: this.convertValue((value as any)[entry]) });
 				}
 			} else {
 				section.entries.push({ value: this.convertValue(value) });

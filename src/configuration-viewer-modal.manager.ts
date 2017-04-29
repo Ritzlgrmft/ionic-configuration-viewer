@@ -35,8 +35,7 @@ export class ConfigurationViewerModalManager {
 	 * Opens the modal.
 	 * @returns Promise which gets resolved as soon as the modal is shown.
 	 */
-	// tslint:disable-next-line:max-line-length
-	public openModal(language: string = undefined, translation: ConfigurationViewerTranslation = undefined): Promise<void> {
+	public openModal(language?: string, translation?: ConfigurationViewerTranslation): Promise<void> {
 		const methodName = "openModal";
 		this.logger.entry(methodName);
 
