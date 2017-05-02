@@ -25,6 +25,7 @@ import { ConfigurationViewerComponent } from "./configuration-viewer.component";
 	],
 	exports: [
 		ConfigurationViewerComponent,
+		ConfigurationViewerModalComponent,
 	],
 	imports: [
 		IonicModule,
