@@ -5,7 +5,7 @@
 			"dom",
 			"es2015"
 		],
-		"module": "commonjs",
+		"module": "es2015",
 		"moduleResolution": "node",
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
@@ -18,8 +18,7 @@
 		"sourceMap": true,
 		"outDir": "dist"
 	},
-	"compileOnSave": false,
-	"atom": {
-		"rewriteTsconfig": false
-	}
+	"files": [
+		"./src/index.ts"
+	]
 }

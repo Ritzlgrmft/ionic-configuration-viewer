@@ -18,7 +18,7 @@
 		"build": "npm run clean && npm run compile && npm run copy-scss",
 		"clean": "rm -f dist/*.d.ts && rm -f dist/*.js && rm -f dist/*.map && rm -f dist/*.json && rm -f dist/*.scss && rm -f src/*.ngfactory.ts && rm -rf aot",
 		"commit": "git-cz",
-		"compile": "ngc -p tsconfig.aot.json",
+		"compile": "tsc -p tsconfig.json && rollup -c rollup.config.js dist/configuration-viewer.module.js > dist/configuration-viewer.bundle.js && ngc -p tsconfig.aot.json",
 		"copy-scss": "cp src/*.scss dist",
 		"karma": "karma start karma.conf.js --browsers Chrome",
 		"karma-once": "karma start karma.conf.js --browsers PhantomJS --single-run",
@@ -32,7 +32,9 @@
 		"dist",
 		"src"
 	],
-	"main": "dist/index.js",
+	"main": "dist/configuration-viewer.bundle.js",
+	"module": "dist/configuration-viewer.module.js",
+	"jsnext:main": "dist/configuration-viewer.module.js",
 	"typings": "dist/index.d.ts",
 	"peerDependencies": {
 		"@angular/common": "^4.0.0",
@@ -80,6 +82,7 @@
 		"karma-typescript-es6-transform": "1.0.0",
 		"reflect-metadata": "0.1.10",
 		"requirejs": "2.3.3",
+		"rollup": "0.41.6",
 		"tslint": "5.1.0",
 		"typescript": "2.2.1",
 		"semantic-release": "6.3.2"
