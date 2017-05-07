@@ -33,8 +33,7 @@
 		"src"
 	],
 	"main": "dist/configuration-viewer.bundle.js",
-	"module": "dist/configuration-viewer.module.js",
-	"jsnext:main": "dist/configuration-viewer.module.js",
+	"module": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"peerDependencies": {
 		"@angular/common": "^4.0.0",
