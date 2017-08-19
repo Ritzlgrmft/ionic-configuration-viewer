@@ -107,7 +107,7 @@ since the modal contains some translatable texts. Therefore,
 `configurationViewerModalManager.openModal()` has a `language` parameter, which you can
 use to select the language. Currently `en` and `de` are supported.
 
-If you need another language, either open an issue, or just the `translation` parameter.
+If you need another language, either open an issue, or just use the `translation` parameter.
 This parameter you can use to pass your completely own texts.
 Just fill the `ConfigurationViewerTranslation` object.
 
@@ -120,7 +120,7 @@ Opens the modal.
 Parameters
 
 - *language*: language used for the modal (currently only `en` or `de`).
-  If *tranlation* is passed as well, the language will be ignored.
+  If *translation* is passed as well, the language will be ignored.
 - *translation*: custom values for the translatable texts.
 
 Returns
@@ -135,6 +135,6 @@ manager.openModal(undefined, { title: "ttt", buttonCancel: "bc" })
   });
 ```
 
-### modalClosed: new EventEmitter&lt;void>
+### modalClosed: EventEmitter&lt;void>
 
 Event triggered when the modal was closed..
