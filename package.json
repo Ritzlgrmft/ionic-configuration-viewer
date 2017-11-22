@@ -16,7 +16,7 @@
 	],
 	"scripts": {
 		"build": "npm run clean && npm run compile && npm run copy-scss",
-		"clean": "cd dist && ls | grep -v .npmignore | xargs rm && cd ..",
+		"clean": "rm -f dist/*.d.ts && rm -f dist/*.js && rm -f dist/*.map && rm -f dist/*.json && rm -f dist/*.scss && rm -f src/*.ngfactory.ts",
 		"commit": "git-cz",
 		"compile": "tsc -p tsconfig.json && rollup -c rollup.config.js dist/configuration-viewer.module.js > dist/configuration-viewer.bundle.js && ngc -p tsconfig.aot.json",
 		"copy-scss": "cp src/*.scss dist",
