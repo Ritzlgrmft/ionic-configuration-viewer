@@ -1,6 +1,6 @@
 # ionic-configuration-viewer
 
-**The dependencies used by the latest version are the same as needed for [Ionic 3.0.0](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md). For older versions use:**
+**The dependencies used by the latest version are the same as needed for [Ionic 3.9.0](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md). For older versions use:**
 
 | ionic-configuration-viewer | Ionic | Angular
 | ----- | -------- | ------
