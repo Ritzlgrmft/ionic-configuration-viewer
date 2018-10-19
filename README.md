@@ -1,9 +1,12 @@
 # ionic-configuration-viewer
 
-**The dependencies used by the latest version are the same as needed for [Ionic 3.9.0](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md). For older versions use:**
+**Please be aware that this component is deprecated since Angular 6 provides a very similar mechanism for environizing as it is provided by [ionic-configuration-service](https://github.com/Ritzlgrmft/ionic-configuration-service). Therefore the service as well as the viewer are deprected now.**
+
+For older versions use:
 
 | ionic-configuration-viewer | Ionic | Angular
 | ----- | -------- | ------
+| -     | >= 4.0.0 | ^6.0.0
 | 5.0.0 | >= 3.9.0 | ^5.0.0
 | 4.1.1 | >= 3.0.0 | ^4.0.0
 | 3.0.0 | >= 2.2.0 | ^2.4.8
